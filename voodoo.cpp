@@ -3,7 +3,7 @@
 #include<string.h>
 #include <limits>
 #include <conio.h>
-#include <fstream>
+
 
 using namespace std;
 
@@ -13,15 +13,17 @@ bool b = 1, si = 1;
 
 struct Usuario
 {
-	string comp[50], nomusu[50], contraseña[10];
+	string comp[50];
+	string nomusu[50];
+	string contrasena[10];
 	Usuario* sig;
-};
+}user;
 
 
 
 
-
-
+bool arre = 1;
+int contador = 0, detener;
 
 void usuarios();
 
@@ -34,9 +36,9 @@ void main()
 {
 	while (b)
 	{
-	
 
-		system("color 0D");                                 
+
+		system("color 0D");
 
 		cout << "\n\t Welcome to Voodoo" << endl;
 
@@ -52,7 +54,7 @@ void main()
 
 		while (si)
 		{
-			cin >> a;                                                             
+			cin >> a;
 			if (!cin.good())
 			{
 				cout << "\nERROR intenta con otro digito de preferencia un entero....\n";
@@ -115,23 +117,45 @@ void usuarios()
 
 		case 1:
 
-						
-			cout << "\nIngrese nombre completo" << endl;		
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			getline(cin,nodousu->comp[50]);
-						
-			cout << "\nIngrese su nombre de usuario" << endl;		
-			getline(cin,nodousu->nomusu[50]);
-			
-			cout << "\nIngrese una contrasena" << endl;
-			getline(cin,nodousu->contraseña[10]);
+			arre = 1;
+		   contador ++;
+			while (arre)
+			{
 
+				cout << "\nIngrese nombre completo" << endl;
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				getline(cin, nodousu->comp[contador]);
 
+				cout << "\nIngrese su nombre de usuario" << endl;
+				getline(cin, nodousu->nomusu[contador]);
+
+				cout << "\nIngrese una contrasena" << endl;
+				getline(cin, nodousu->contrasena[contador]);
+
+				cout << "buscar otra genero o salir de la busqueda: " << endl;
+
+				cout << "selecciona 1 para continuar o 2 para volver al menu de busqueda: " << endl;
+
+				cin >> detener;
+
+				if (detener == 1)
+				{
+					arre = 1;
+				}
+
+				if (detener == 2)
+				{
+
+					arre = 0;
+				}
+
+			}
 
 			break;
 
 
 		default:
+			
 			break;
 		}
 
